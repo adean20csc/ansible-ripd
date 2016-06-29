@@ -1,8 +1,8 @@
 ---
 version: '2'
 services:
-    ansible-template-packer:
-        image: ansible-template-packer 
+    rancheros-ansible:
+        image: rancheros-ansible 
         build: .
         privileged: true
         ports:

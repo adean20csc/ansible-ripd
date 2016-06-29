@@ -1,7 +1,3 @@
-#version=RHEL7
-# more information is available at
-# https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/Installation_Guide/sect-kickstart-syntax.html
-
 # System authorization information
 auth --enableshadow --passalgo=sha512
 
@@ -41,7 +37,6 @@ reboot --eject
 
 %packages
 @core
-deltarpm
 openssh-clients
 %end
 
@@ -53,15 +48,7 @@ echo "packer"|passwd --stdin packer
 echo "packer        ALL=(ALL)       NOPASSWD: ALL" >> /etc/sudoers.d/packer
 chmod 0440 /etc/sudoers.d/packer
 
-# register the node.  Note that you should replace the following variables in this
-# command with valid RHN credentials:
-#     RHN_USERNAME with the username of an account with a valid subscription
-#     RHN_PASSWORD with the password for that account
-/usr/sbin/subscription-manager register --username {{submgr_username}} --password {{submgr_password}} --autosubscribe
-/usr/sbin/subscription-manager repos --disable=*
-/usr/sbin/subscription-manager repos --enable=rhel-7-server-optional-rpms --enable=rhel-7-server-extras-rpms --enable=rhel-7-server-rpms
-
-yum -y install https://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-5.noarch.rpm
-yum -y install ansible git
+yum -y install epel-release 
+yum -y install ansible 
 
 %end

@@ -12,11 +12,9 @@ RUN mkdir /opt/packer \
 
 COPY . /opt/ansible-template
 
-
-
 VOLUME /build
 WORKDIR /build
-ENTRYPOINT ["/opt/ansible-template/docker-entrypoint.py"]
+ENTRYPOINT ["/opt/packer/packer"]
 CMD ["--help"]
 EXPOSE 5900
 

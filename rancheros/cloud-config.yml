@@ -1,0 +1,14 @@
+#cloud-config
+chpasswd:
+    list: |
+        rancher:trustn01
+    expire: False
+
+ssh_authorized_keys:
+  - 
+  
+rancher:
+  services: 
+    nginxapp:
+      image: nginx
+      restart: always

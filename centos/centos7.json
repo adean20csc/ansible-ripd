@@ -9,9 +9,9 @@
       "name": "ansible-template.qcow2",
       "type": "qemu",
       "iso_checksum_type": "sha256",
-      "iso_checksum": "",
+      "iso_checksum": "f90e4d28fa377669b2db16cbcb451fcb9a89d2460e3645993e30e137ac37d284",
       "iso_url": "/build/centos.iso",
-      "output_directory": "/build/",
+      "output_directory": "/build/output",
       "ssh_wait_timeout": "30s",
       "shutdown_command": "shutdown -P now",
       "disk_size": 8192,
@@ -31,8 +31,9 @@
       "disk_interface": "virtio",
       "vnc_port_min": 5900,
       "vnc_port_max": 5900,
+      "qemu_binary": "/usr/libexec/qemu-kvm",
       "boot_command": [
-        "<tab> append initrd=initrd.img inst.text inst.ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks-isolinux-packer.cfg<enter><wait>"
+        "<tab> append initrd=initrd.img inst.text inst.ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks.cfg<enter><wait>"
       ]
     }]
 }
