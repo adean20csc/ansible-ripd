@@ -1,0 +1,16 @@
+---
+# docker run -it -e HOME=/ --privileged=true -p 5900:5900 -v /dev/kvm:/dev/kvm:rw -v /dev/net/tun:/dev/net/tun:rw -v $DIR:/build dcaf-abe-packer-build build /opt/dcaf-abe/rhel7.json
+
+version: '2'
+services:
+    ansible-template-packer:
+        image: ansible-template-packer 
+        build: .
+        command: build /opt/dcaf-abe/rhel7.json 
+        ports:
+        
+        volumes: 
+          - build:/build
+
+volumes:
+  build:
