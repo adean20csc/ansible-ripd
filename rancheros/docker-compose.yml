@@ -5,8 +5,6 @@ services:
         image: rancheros-ansible 
         build: .
         privileged: true
-        ports:
-            - "127.0.0.1:5900:5900"        
         command: build /opt/ansible-template/rancheros.json
         volumes: 
             - build:/build
