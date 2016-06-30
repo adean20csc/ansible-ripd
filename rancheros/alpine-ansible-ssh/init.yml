@@ -1,0 +1,44 @@
+---
+- name: Build DevCloud Image
+  hosts: localhost
+  tasks:
+    
+    - name: Update
+      command: apk update
+
+    - name: Install OpenSSH
+      command: apk add openssh
+
+    - name: Copy sshd_config
+      copy:
+        src: sshd_config
+        dest: /etc/ssh/sshd_config
+
+    - name: Generate Host Keys
+      command: ssh-keygen -A
+
+    - name: Create user ansible
+      command: adduser -D -s /bin/ash ansible
+
+    - name: Set password ansible
+      command: passwd -u ansible
+
+    - name: Upgrade pip
+      pip:
+        name: pip
+        state: latest
+        
+    - name: Install pip packages
+      pip:
+        name: "{{ item }}"
+        state: present
+      with_items:
+        - pyyaml
+        - jinja2
+        - pycrypto
+        - paramiko
+        - httplib2
+        - boto
+        - xmltodict
+        - pywinrm
+
