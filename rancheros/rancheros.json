@@ -60,7 +60,6 @@
       "disk_interface": "scsi",
       "vnc_port_min": 5900,
       "vnc_port_max": 5900,
-      "qemu_binary": "/usr/bin/qemu-kvm",
       "qemuargs": [
           [ "-m", "1024M" ]
         ]
