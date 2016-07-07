@@ -1,13 +1,12 @@
-FROM centos:latest
+FROM fedora:latest
 MAINTAINER Joseph Callen <jcpowermac@gmail.com>
 
 ENV packer_bin_dir /opt/hashicorp/bin
 ENV packer_path ${packer_bin_dir}/packer
 
-RUN yum -y install qemu-kvm git wget qemu python-requests unzip && \
-    yum clean all
-
-COPY packer ${packer_path}
+RUN dnf -y install qemu-kvm git wget qemu python-pip python-requests unzip \
+  && pip install cot  \ 
+  && dnf clean all
 
 RUN mkdir -p ${packer_bin_dir} && \
     wget -nv $(python -c 'import requests;version = requests.get("https://api.github.com/repos/mitchellh/packer/tags").json()[0]["name"].replace("v","");print "https://releases.hashicorp.com/packer/%s/packer_%s_linux_amd64.zip" % (version,version)') -O /tmp/packer.zip && \
@@ -20,4 +19,3 @@ WORKDIR /build
 ENTRYPOINT ["/opt/hashicorp/bin/packer"]
 CMD ["--help"]
 EXPOSE 5900
-

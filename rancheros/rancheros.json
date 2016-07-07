@@ -2,19 +2,19 @@
 "provisioners": [
 {
   "type": "file",
-  "source": "/opt/ansible-template/cloud-config.yml",
+  "source": "/opt/hashicorp/etc/packer/cloud-config.yml",
   "destination": "/tmp/cloud-config.yml"
 },
 {
   "type": "shell",
-  "inline": ["sudo ros install -c /tmp/cloud-config.yml -d /dev/vda -f -t generic --no-reboot"]
+  "inline": ["sudo ros install -c /tmp/cloud-config.yml -d {{user `device`}} -f -t generic --no-reboot"]
 }],
 "builders": [{
-      "name": "rancheros.qcow2",
+      "name": "rancheros-virtio",
       "type": "qemu",
       "iso_checksum_type": "sha256",
-      "iso_checksum": "578435ac2631261e8b28843faf87eac48076c1b020ccc547ed8eaf8fb96e996f",
-      "iso_url": "https://github.com/rancher/os/releases/download/v0.4.5/rancheros.iso",
+      "iso_checksum": "58ca14b497178097d716ecd5d06332c4c2f6b9c5a127cf88453a5d22742835d4",
+      "iso_url": "https://github.com/rancher/os/releases/download/v0.5.0/rancheros.iso",
       "output_directory": "/build/output",
       "ssh_wait_timeout": "30s",
       "shutdown_command": "sudo poweroff",
@@ -36,5 +36,55 @@
       "qemuargs": [
           [ "-m", "1024M" ]
         ]
-    }]
+    },
+    { 
+      "name": "rancher-scsi-e1000",
+      "type": "qemu",
+      "iso_checksum_type": "sha256",
+      "iso_checksum": "58ca14b497178097d716ecd5d06332c4c2f6b9c5a127cf88453a5d22742835d4",
+      "iso_url": "https://github.com/rancher/os/releases/download/v0.5.0/rancheros.iso",
+      "output_directory": "/build/output",
+      "ssh_wait_timeout": "30s",
+      "shutdown_command": "sudo poweroff",
+      "disk_size": 8192,
+      "format": "qcow2",
+      "headless": true,
+      "accelerator": "kvm",
+      "ssh_host_port_min": 2222,
+      "ssh_host_port_max": 2229,
+      "ssh_username": "rancher",
+      "ssh_password": "rancher",
+      "ssh_port": 22,
+      "ssh_wait_timeout": "90m",
+      "net_device": "e1000",
+      "disk_interface": "scsi",
+      "vnc_port_min": 5900,
+      "vnc_port_max": 5900,
+      "qemu_binary": "/usr/bin/qemu-kvm",
+      "qemuargs": [
+          [ "-m", "1024M" ]
+        ]
+    }],
+"post-processors": [
+    {
+        "type": "shell-local",
+        "inline": "qemu-img convert -f qcow2 -O vmdk /build/output/packer-rancher-scsi-e1000 /build/output/rancher.vmdk",
+        "only": ["rancher-scsi-e1000"]
+    },
+    {
+        "type": "shell-local",
+        "inline": "cot -f edit-product /opt/hashicorp/etc/packer/minimal.ovf -o /build/output/rancher.ovf -p RancherOS -n Rancher -v 0.5.0",
+        "only": ["rancher-scsi-e1000"]
+    },
+    {
+        "type": "shell-local",
+        "inline": "cot -f edit-hardware /build/output/rancher.ovf -v vmx-8 -c 1 -m 1G -n 1 --nic-types e1000 --nic-names eth0 --nic-networks eth0 --network-descriptions \"Management Network\"",
+        "only": ["rancher-scsi-e1000"]
+    },
+    {
+        "type": "shell-local",
+        "inline": "cot -f add-disk /build/output/rancher.vmdk /build/output/rancher.ovf -t harddisk -c scsi",
+        "only": ["rancher-scsi-e1000"]
+    }
+]
 }
