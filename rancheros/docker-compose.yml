@@ -1,11 +1,14 @@
 ---
 version: '2'
 services:
-    rancheros-ansible:
-        image: rancheros-ansible 
-        build: .
+    packer-rancheros:
+        image: jcpowermac/packer-rancheros 
         privileged: true
-        command: build /opt/ansible-template/rancheros.json
+        ports:
+            - "0.0.0.0:5900:5900"
+        command: build -only rancher-scsi-e1000 -var 'device=/dev/sda' /opt/hashicorp/etc/packer/rancheros.json
+        #environment:
+        #    PACKER_LOG: 1
         volumes: 
             - build:/build
             - /dev/kvm:/dev/kvm:rw
