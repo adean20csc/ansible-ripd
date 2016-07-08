@@ -54,4 +54,4 @@ ansible-playbook 2.1.0.0
 67c56321308c:~$
 ```
 
-[Next](02_packer.md)
+[Next](02_packer_image.md)
