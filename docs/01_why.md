@@ -1,7 +1,6 @@
 #### Why?
 
-The goal of this project is to create the smallest virtual machine image to be distributed
-and consumed easily to team around the world.
+The goal of this project is to create the smallest virtual machine image to be distributed and consumed easily to users around the world.
 
 ##### First...smallest
 
