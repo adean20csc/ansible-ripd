@@ -7,7 +7,7 @@ Automated deployment of virtual machine templates for Ansible.
 
 ##### Table of Contents
 
-[Why?](docs/01_why.md)
-[Packer Docker Image](docs/02_packer_image.md)
-[Packer Configuration][docs/03_oacker_config.md]
-[Run (TL;DR)](docs/04_run.md)
+- [Why?](docs/01_why.md)
+- [Packer Docker Image](docs/02_packer_image.md)
+- [Packer Configuration][docs/03_oacker_config.md]
+- [Run TL;DR](docs/04_run.md)

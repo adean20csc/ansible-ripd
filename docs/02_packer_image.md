@@ -1,11 +1,10 @@
 #### Docker Image for Packer
 
-Currently the base image is Alpine.  
+The current base image is Alpine.  It was a perfect choice as a base because of its size at only 4.8 MB.
 ```
 FROM alpine:latest
 MAINTAINER Joseph Callen <jcpowermac@gmail.com>
 ```
-Alpine is great for a base image since it is very small.
 In order to use [Hashicorp Packer](http://packer.io) some prerequisites are required which is installed in the image.
 
 ```
