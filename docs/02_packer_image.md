@@ -91,4 +91,4 @@ Successfully built a51258ee2cf0
 
 For the most current revision see the [docker-compose.build.yml](../rancheros/docker-compose.build.yml).
 
-[Next](02_packer_config.md)
+[Next](03_packer_config.md)
