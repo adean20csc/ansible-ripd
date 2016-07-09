@@ -1,0 +1,8 @@
+---
+version: '2'
+services:
+    alpine-ansible-ssh:
+        image: jcpowermac/alpine-ansible-ssh
+        build: 
+            context: .
+            dockerfile: Dockerfile

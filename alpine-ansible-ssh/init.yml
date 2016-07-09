@@ -7,7 +7,7 @@
       command: apk update
 
     - name: Install OpenSSH
-      command: apk add openssh
+      command: apk add openssh git
 
     - name: Copy sshd_config
       copy:
@@ -41,4 +41,5 @@
         - boto
         - xmltodict
         - pywinrm
+        - pyvmomi
 

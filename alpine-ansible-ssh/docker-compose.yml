@@ -1,0 +1,12 @@
+---
+version: '2'
+services:
+    alpine-ansible-ssh:
+        image: jcpowermac/alpine-ansible-ssh 
+        ports:
+            - "0.0.0.0:2222:22"
+        volumes: 
+            - projects:/projects
+
+volumes:
+  projects:
