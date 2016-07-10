@@ -8,9 +8,9 @@ try:
     from subprocess import call
     import requests
     import re
-    HAS_IMPORTS = true
+    HAS_IMPORTS = True
 except ImportError:
-    HAS_IMPORTS = false
+    HAS_IMPORTS = False
 
 
 def parse_checksum(url):
