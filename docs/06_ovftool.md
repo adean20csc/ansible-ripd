@@ -4,7 +4,7 @@ In the example below the ovftool used is the one included with VMware Fusion.  T
 
 - `-ds`
 - `--net` after the `=` 
-- destination
+- destination  
   In the example this is being deployed to ESXi 5.5 
 
 
