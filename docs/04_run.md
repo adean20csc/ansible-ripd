@@ -94,3 +94,6 @@ drwxr-xr-x. 4 root root 4.0K Jul  7 21:18 ..
 -rw-r--r--. 1 root root 3.0K Jul  7 21:20 rancher.ovf
 -rw-r--r--. 1 root root  44M Jul  7 21:20 rancher.vmdk
 ```
+#### YouTube Video
+[![youtube - docker-compose up](http://img.youtube.com/vi/StYlU6Xy_JQ/0.jpg)](http://www.youtube.com/watch?v=StYlU6Xy_JQ)
+
