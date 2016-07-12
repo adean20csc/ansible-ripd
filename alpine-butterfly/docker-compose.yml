@@ -1,0 +1,7 @@
+---
+version: '2'
+services:
+    alpine-butterfly:
+        image: jcpowermac/alpine-butterfly
+        ports:
+            - "0.0.0.0:57575:57575"
