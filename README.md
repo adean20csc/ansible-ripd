@@ -15,6 +15,7 @@ Automated building virtual machine instance for Ansible OpenSSH container.
 - [Packer Configuration](docs/03_packer_config.md)
 - [Run](docs/04_run.md)
 - [Deploy with ovftool](docs/06_ovftool.md)
+
 #### YouTube Video
 [![youtube - docker-compose up](http://img.youtube.com/vi/StYlU6Xy_JQ/0.jpg)](http://www.youtube.com/watch?v=StYlU6Xy_JQ)
 
