@@ -86,5 +86,5 @@ WORKDIR /build
 # ------------------------------------------------
 ENTRYPOINT ["/docker-entrypoint.py"]
 CMD ["--help"]
-EXPOSE 5900
+EXPOSE 5910 5911
 
