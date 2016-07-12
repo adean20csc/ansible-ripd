@@ -1,5 +1,6 @@
 FROM jcpowermac/alpine-ansible-ssh 
 
+USER root
 RUN pip install butterfly   
 
 USER ansible
