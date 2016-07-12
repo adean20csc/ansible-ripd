@@ -6,8 +6,9 @@ services:
 # Privileged is required to execute a QEMU/KVM virtual machine in the container  
         privileged: true
         ports:
-            - "0.0.0.0:5900:5900"
-        command: build -only rancher-scsi-e1000 -var 'device=/dev/sda' /opt/hashicorp/etc/packer/rancheros.json
+            - "0.0.0.0:5910:5910"
+            - "0.0.0.0:5911:5911"
+        command: build -only rancher-offline,rancher-online -var 'device=/dev/sda' /opt/hashicorp/etc/packer/rancheros.json
 # This commented environment variable will enable debug logging for Packer
 #       environment:
 #           PACKER_LOG: 1    
