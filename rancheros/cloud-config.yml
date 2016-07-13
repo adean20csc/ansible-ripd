@@ -8,4 +8,5 @@ rancher:
             ports:
                 - 2222:22
             restart: always
-
+            volumes:
+                - projects:/home/ansible/projects
