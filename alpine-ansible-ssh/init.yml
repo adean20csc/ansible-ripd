@@ -23,6 +23,13 @@
     - name: Set password ansible
       command: passwd -u ansible
 
+    - name: Create Projects Path
+      file:
+        state: directory
+        path: /home/ansible/projects
+        owner: ansible
+        group: ansible
+
     - name: Upgrade pip
       pip:
         name: pip
