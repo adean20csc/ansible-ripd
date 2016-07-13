@@ -6,7 +6,7 @@ services:
         ports:
             - "0.0.0.0:2222:22"
         volumes: 
-            - projects:/projects
+            - projects:/home/ansible/projects
 
 volumes:
   projects:
