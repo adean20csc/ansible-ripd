@@ -10,3 +10,10 @@ rancher:
             restart: always
             volumes:
                 - projects:/home/ansible/projects
+        alpine-butterfly:
+            image: jcpowermac/alpine-butterfly 
+            ports:
+                - 57575:57575  
+            restart: always
+            volumes:
+                - projects:/home/ansible/projects
