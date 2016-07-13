@@ -12,10 +12,11 @@
 {
   "type": "shell",
   "inline": ["sudo docker pull jcpowermac/alpine-ansible-ssh", 
+      "sudo docker pull jcpowermac/alpine-butterfly",
       "sudo mkdir -p /mnt/img",
       "sudo mount /dev/sda1 /mnt/img",
       "sudo mkdir -p /mnt/img/var/lib/rancher/preload/docker",
-      "sudo docker save -o /mnt/img/var/lib/rancher/preload/docker/ansible.tar jcpowermac/alpine-ansible-ssh"
+      "sudo docker save -o /mnt/img/var/lib/rancher/preload/docker/ansible.tar jcpowermac/alpine-ansible-ssh jcpowermac/alpine-butterfly"
   ],
   "only": ["rancher-offline"]
 }
