@@ -1,8 +1,8 @@
 ---
 version: '2'
 services:
-    packer-rancheros:
-        image: jcpowermac/packer-rancheros
+    ansible-ripd:
+        image: jcpowermac/ansible-ripd
         build: 
             context: .
             dockerfile: Dockerfile

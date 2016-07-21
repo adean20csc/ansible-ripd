@@ -1,8 +1,8 @@
 ---
 version: '2'
 services:
-    packer-rancheros:
-        image: jcpowermac/packer-rancheros
+    ansible-ripd:
+        image: jcpowermac/ansible-ripd
 # Privileged is required to execute a QEMU/KVM virtual machine in the container  
         privileged: true
         ports:
